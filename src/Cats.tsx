@@ -25,7 +25,7 @@ const Cats: React.FC = () => {
   // Fetch cat images from API when the component mounts
   useEffect(() => {
     fetchCats()
-      .catch((err) => console.info("Hmm... ", err));
+      .catch((err) => console.log("Hmm... ", err));
   }, []);
 
   // Delete a cat from the list (Altho why would you? Really?)
@@ -37,21 +37,19 @@ const Cats: React.FC = () => {
   return (
     <>
     <h2>Caaats</h2>
-    <div className="container">
-      {loading
-        ? <p>Loading...</p>
-        : cats.map((cat) => (
+    { loading
+      ? <p>Loading...</p>
+      : <div className="container" data-testid="cat-box">
+          {cats.map((cat) => (
           <div key={cat.id} className="cat-card">
-            <div className="flex flex-col items-center">
-              <img src={cat.url} alt="Cat" className="cat-pic" />
-              <button onClick={() => deleteCat(cat.id)} className="">
-                Delete me 🐈 ☠️ 🙁
-              </button>
-            </div>
+            <img src={cat.url} alt="Cat" className="cat-pic" />
+            <button onClick={() => deleteCat(cat.id)} className="">
+              Delete me 🐈 ☠️ 🙁
+            </button>
           </div>
-        ))
-      }
-    </div>
+          ))}
+        </div>
+    }
     </>
   );
 };
