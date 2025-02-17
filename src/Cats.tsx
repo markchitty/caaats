@@ -42,8 +42,8 @@ const Cats: React.FC = () => {
       : <div className="container" data-testid="cat-box">
           {cats.map((cat) => (
           <div key={cat.id} className="cat-card">
-            <img src={cat.url} alt="Cat" className="cat-pic" />
-            <button onClick={() => deleteCat(cat.id)} className="">
+            <img src={cat.url} alt={`Cat ${cat.id}`} className="cat-pic" />
+            <button onClick={() => deleteCat(cat.id)} data-testid={`delete_${cat.id}`}>
               Delete me 🐈 ☠️ 🙁
             </button>
           </div>
