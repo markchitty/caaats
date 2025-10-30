@@ -9,27 +9,3 @@ h2 {
   gap: 16px;
   padding: 16px;
 }
-
-.cat-card {
-  border-radius: 8px;
-  box-shadow: 0 0 10px #00000044;
-  overflow: hidden;
-}
-
-.cat-pic {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-}
-
-button {
-  display: block;
-  background: oklch(40% 0.2 30);
-  color: #eee;
-  margin: 8px auto;
-
-  &:hover {
-    background: oklch(50% 0.2 30);
-    color: white;
-  }
-}

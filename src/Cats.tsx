@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import CatCard from './components/CatCard';
 import './Cats.css';
 
-interface Cat {
+export interface Cat {
   id: string;
   url: string;
   width: number;
   height: number;
 }
 
-const Cats: React.FC = () => {
+const Cats = () => {
   const [cats, setCats] = useState<Cat[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -41,12 +42,7 @@ const Cats: React.FC = () => {
       ? <p>Loading...</p>
       : <div className="container" data-testid="cat-box">
           {cats.map((cat) => (
-          <div key={cat.id} className="cat-card">
-            <img src={cat.url} alt={`Cat ${cat.id}`} className="cat-pic" />
-            <button onClick={() => deleteCat(cat.id)} data-testid={`delete_${cat.id}`}>
-              Delete me 🐈 ☠️ 🙁
-            </button>
-          </div>
+            <CatCard key={cat.id} cat={cat} onDelete={deleteCat} />
           ))}
         </div>
     }
